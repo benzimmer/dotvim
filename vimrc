@@ -128,13 +128,8 @@ au FileType make set noexpandtab
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 au BufRead,BufNewFile *.{pill}    set ft=ruby
 
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
-
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
-
-"au BufRead,BufNewFile *.txt call s:setupWrapping()
 
 " python support
 " --------------
@@ -286,3 +281,5 @@ map <Leader>rq :VimuxCloseRunner<CR>
 
 " Interrupt any command running in the runner pane
 map <Leader>rs :VimuxInterruptRunner<CR>
+
+map <Leader>b :EasyBuffer<CR>

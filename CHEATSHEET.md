@@ -1,4 +1,5 @@
 ,a - :Ack [word under cursor]
+,b - open EasyBuffer
 ,s - :%s/[word under cursor]/
 ,n - toggle file explorer
 ,m - toggle tab bar

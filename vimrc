@@ -225,18 +225,6 @@ let macvim_hig_shift_movement = 1
 :nmap <leader>a :Ack <c-r>=expand("<cword>")<cr>
 :nmap <leader>w :Ack <c-r>=expand("def <cword>")<cr>
 
-" MiniBufExplorer config
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplorerMoreThanOne = 2
-let g:miniBufExplModSelTarget = 0
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplSplitBelow=0
-
-autocmd BufRead,BufNew :call UMiniBufExplorer
-
-map <leader>m :TMiniBufExplorer<cr>
-
 " Omnicomplete
 autocmd BufRead,BufNewFile *.scss set filetype=scss
 autocmd FileType {css,scss} set omnifunc=csscomplete#CompleteCSS

@@ -17,6 +17,9 @@ endif
 " Set leader to ,
 let mapleader=','
 
+" Toggle paste mode
+set pastetoggle=<F12>
+
 " use arrows to switch buffers
 nmap <silent> <S-w> :bn<CR>
 nmap <silent> <S-q> :bp<CR>

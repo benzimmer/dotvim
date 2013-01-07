@@ -61,7 +61,7 @@ let g:solarized_visibility="high"
 let g:solarized_hitrail=1
 let g:solarized_termtrans=1
 colorscheme solarized
-set background=light
+set background=dark
 
 set showmatch
 set mat=2

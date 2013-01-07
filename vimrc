@@ -269,6 +269,14 @@ map <Leader>rq :VimuxCloseRunner<CR>
 map <Leader>rs :VimuxInterruptRunner<CR>
 
 map <Leader>b :EasyBuffer<CR>
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
+
 function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w

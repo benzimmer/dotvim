@@ -223,6 +223,7 @@ let macvim_hig_shift_movement = 1
 
 " Ack word under cursor
 :nmap <leader>a :Ack <c-r>=expand("<cword>")<cr>
+:nmap <leader>w :Ack <c-r>=expand("def <cword>")<cr>
 
 " MiniBufExplorer config
 let g:miniBufExplModSelTarget = 1
@@ -269,6 +270,9 @@ map <Leader>rq :VimuxCloseRunner<CR>
 map <Leader>rs :VimuxInterruptRunner<CR>
 
 map <Leader>b :EasyBuffer<CR>
+
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will

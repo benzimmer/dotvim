@@ -218,23 +218,6 @@ let g:JSLintHighlightErrorLine = 0
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
-" RSpec in quickfix window
-function! RSpec(command)
-  " TODO: handle args such as --tag focus here, or make a separate command for it
-  if a:command == ''
-    let dir = 'spec'
-  else
-    let dir = a:command
-  endif
-  cexpr system("rspec -r ~/.rspecformatters/vim_formatter -f RSpec::Core::Formatters::VimFormatter " . dir)
-  cw
-endfunction
-command! -nargs=? -complete=file Spec call RSpec(<q-args>)
-map <leader>s :Spec<space>
-
-" Disable LustyJuggler ruby warning
-let g:LustyJugglerSuppressRubyWarning=1
-
 " Replace word under cursor
 :nmap <leader>s :s/\(<c-r>=expand("<cword>")<cr>\)/
 

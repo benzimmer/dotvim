@@ -284,6 +284,7 @@ function! RunTests(filename)
     :w
     :silent !echo;echo;echo;echo;echo
     exec ":!bundle exec rspec " . a:filename
+    call VimuxRunCommand("clear; nocorrect bundle exec rspec " . a:filename)
 endfunction
 
 function! SetTestFile()

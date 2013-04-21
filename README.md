@@ -4,7 +4,7 @@
 
 * git
 * rake
-* ack
+* ack or the_silver_searcher
 * CMake
 * vim ;)
 

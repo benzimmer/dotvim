@@ -309,3 +309,6 @@ map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
 " Run all test files
 map <leader>a :call RunTests('spec')<cr>
+
+" Use the_silver_searcher instead of ack
+let g:ackprg = 'ag --nogroup --nocolor --column'

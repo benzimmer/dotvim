@@ -1,6 +1,7 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 set t_Co=256
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 set guifont=Mensch\ for\ Powerline:h12
 let g:Powerline_symbols = 'fancy'
 

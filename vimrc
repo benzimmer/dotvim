@@ -8,7 +8,7 @@ set cursorline
 highlight clear SignColumn
 
 " use system clipboard on osx
-set clipboard=unnamed
+"set clipboard=unnamed
 
 set hidden
 
@@ -24,6 +24,13 @@ let mapleader=','
 set pastetoggle=<F12>
 
 " use arrows to switch buffers
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
 nmap <silent> <S-w> :bn<CR>
 nmap <silent> <S-q> :bp<CR>
 

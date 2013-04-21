@@ -23,7 +23,6 @@ let mapleader=','
 " Toggle paste mode
 set pastetoggle=<F12>
 
-" use arrows to switch buffers
 " Yank text to the OS X clipboard
 noremap <leader>y "*y
 noremap <leader>yy "*Y
@@ -31,6 +30,7 @@ noremap <leader>yy "*Y
 " Preserve indentation while pasting text from the OS X clipboard
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
+" use Shift-w/-q to switch buffers
 nmap <silent> <S-w> :bn<CR>
 nmap <silent> <S-q> :bp<CR>
 
@@ -229,11 +229,11 @@ let g:JSLintHighlightErrorLine = 0
 let macvim_hig_shift_movement = 1
 
 " Replace word under cursor
-:nmap <leader>s :s/\(<c-r>=expand("<cword>")<cr>\)/
+:nmap <leader>r :s/\(<c-r>=expand("<cword>")<cr>\)/
 
 " Ack word under cursor
-:nmap <leader>a :Ack <c-r>=expand("<cword>")<cr>
-:nmap <leader>w :Ack <c-r>=expand("def <cword>")<cr>
+:nmap <leader>s :Ack <c-r>=expand("<cword>")<cr>
+:nmap <leader>sd :Ack "def <c-r>=expand("<cword>")<cr>"
 
 " Omnicomplete
 autocmd BufRead,BufNewFile *.scss set filetype=scss
@@ -267,7 +267,7 @@ map <Leader>rq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane
 map <Leader>rs :VimuxInterruptRunner<CR>
 
-map <Leader>b :EasyBuffer<CR>
+map <Leader>m :EasyBuffer<CR>
 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 

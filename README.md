@@ -76,6 +76,7 @@ _Note: Auto generated from `vundle.config`
  * [ctrlp.vim](https://github.com/kien/ctrlp.vim)
  * [switch.vim](https://github.com/AndrewRadev/switch.vim)
  * [vimux](https://github.com/benmills/vimux)
+ * [vim-turbux](https://github.com/jgdavey/vim-turbux)
  * [easybuffer.vim](https://github.com/troydm/easybuffer.vim)
  * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
  * [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)

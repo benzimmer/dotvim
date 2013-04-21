@@ -4,6 +4,8 @@ set t_Co=256
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 set guifont=Mensch\ for\ Powerline:h12
 let g:Powerline_symbols = 'fancy'
+set cursorline
+highlight clear SignColumn
 
 " use system clipboard on osx
 set clipboard=unnamed

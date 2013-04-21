@@ -5,6 +5,7 @@
 * git
 * rake
 * ack
+* CMake
 * vim ;)
 
 ## Installation
@@ -23,6 +24,8 @@
     $ cd ~/.vim
     $ git pull
     $ vim +BundleInstall
+    $ cd bundle/YouCompleteMe
+    $ ./install.sh
 
 ## Plugin List
 

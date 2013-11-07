@@ -3,7 +3,6 @@ filetype off                   " required!
 set t_Co=256
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 set guifont=Mensch\ for\ Powerline:h12
-let g:Powerline_symbols = 'fancy'
 set cursorline
 highlight clear SignColumn
 
@@ -214,8 +213,8 @@ set modeline
 set modelines=10
 
 " Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
+set backupdir=/tmp/vim-backup
+set directory=/tmp/vim-backup
 
 set noswapfile
 

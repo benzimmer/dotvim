@@ -1,13 +1,12 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 set t_Co=256
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 set guifont=Mensch\ for\ Powerline:h12
 set cursorline
 highlight clear SignColumn
 
 " use system clipboard on osx
-"set clipboard=unnamed
+set clipboard=unnamed
 
 set hidden
 
@@ -18,6 +17,9 @@ endif
 
 " Set leader to ,
 let mapleader=','
+
+" use mouse
+set mouse=nicr
 
 " Toggle paste mode
 set pastetoggle=<F12>
@@ -53,7 +55,9 @@ map ,d :b#<bar>bd#<CR>
 nnoremap <silent> <leader>y :YRShow<CR>
 
 " clear search highlighting
-nmap <silent> <leader>/ :nohlsearch<CR>
+"nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <CR> :nohlsearch<cr>
+
 
 " Fast editing and reloading of the .vimrc
 map <leader>e :e! ~/.vim/vimrc<cr>
@@ -68,9 +72,9 @@ set tw=0
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 let g:solarized_hitrail=1
-let g:solarized_termtrans=1
+let g:solarized_termtrans=0
+set background=light
 colorscheme solarized
-set background=dark
 
 set showmatch
 set mat=2
@@ -78,6 +82,7 @@ set mat=2
 " Set encoding
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,latin1
+"set tenc=utf8
 
 " Whitespace stuff
 set nowrap
@@ -95,17 +100,17 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,*/vendor/cache/**,**/vendor/gems/**
+set wildignore+=*/tmp/**,*.so,*.swp,*.zip
 
 " Status bar
 set laststatus=2
 " Show (partial) command in the status line
 set showcmd
 
+let g:statusline_enabled = 0
 "Load Fugitive
 let g:statusline_fugitive = 1
-"Load RVM
-let g:statusline_rvm = 1
 "Do Not Load Syntastic
 let g:statusline_syntastic = 1
 
@@ -113,16 +118,13 @@ let g:statusline_syntastic = 1
 let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
 
-" Command-T configuration
-let g:CommandTMaxHeight=20
-
 " CTRL-P configuration
 let g:ctrlp_map = '<c-x>' " map to ctrl-x
 let g:ctrlp_by_filename = 0 " make filename mode standard
 let g:ctrlp_match_window_reversed = 1 " reverse match sort order
 let g:ctrlp_working_path_mode = 2 " find working-directory
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$|node_modules',
   \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$',
   \ 'link': 'some_bad_symbolic_link',
   \ }
@@ -197,7 +199,7 @@ filetype plugin indent on
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 " gist-vim defaults
 if has("mac")
@@ -246,7 +248,7 @@ nnoremap - :Switch<cr>
 
 " vimux
 " Run the current file with rspec
-map <Leader>rb :call VimuxRunCommand("clear; nocorrect bundle exec rspec " . bufname("%"))<CR>
+map <Leader>rb :call VimuxRunCommand("clear; nocorrect bin/rspec " . bufname("%"))<CR>
 
 " Prompt for a command to run
 map <Leader>rp :VimuxPromptCommand<CR>
@@ -270,16 +272,50 @@ map <Leader>m :EasyBuffer<CR>
 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-set winwidth=84
+"set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
-set winheight=10
-set winminheight=10
-set winheight=999
+"set winheight=10
+"set winminheight=10
+"set winheight=999
 
 let g:turbux_runner  = 'vimux'
 let g:turbux_command_prefix = 'bundle exec'
 
 " Use the_silver_searcher instead of ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" neocomplete
+
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Writing mode
+nnoremap <silent> <leader>z :Goyo<cr>
+
+" Open gitx
+nnoremap <silent> <leader><leader>g :!gitx<cr><cr>
+" Insert binding.pry
+map <Leader>b obinding.pry<esc>:w<cr>
+" Clear rails cache
+nnoremap <silent> <leader><leader>c :!rm -r tmp/cache<cr><cr>
